@@ -13,7 +13,7 @@ const ItemList = () => {
   useEffect(() => {
     const validateToken = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/auth/validate", {
+        const response = await axios.get("https://mern-crud-inventory-management.onrender.com/api/auth/validate", {
           withCredentials: true,
         });
         if (response.data.valid) {
@@ -29,7 +29,7 @@ const ItemList = () => {
 
   const fetchItems = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/api/items", {
+      const response = await axios.get("https://mern-crud-inventory-management.onrender.com/api/items", {
         withCredentials: true,
       });
       setItems(response.data);
@@ -40,7 +40,7 @@ const ItemList = () => {
 
   const addItem = async () => {
     try {
-      await axios.post("http://localhost:5000/api/items", newItem, {
+      await axios.post("https://mern-crud-inventory-management.onrender.com/api/items", newItem, {
         withCredentials: true,
       });
       setNewItem({ name: "", description: "" });
@@ -53,7 +53,7 @@ const ItemList = () => {
   const updateItem = async (id) => {
     try {
       const updatedItem = { ...newItem };
-      await axios.put(`http://localhost:5000/api/items/${id}`, updatedItem, {
+      await axios.put(`https://mern-crud-inventory-management.onrender.com/api/items/${id}`, updatedItem, {
         withCredentials: true,
       });
       setNewItem({ name: "", description: "" });
@@ -65,7 +65,7 @@ const ItemList = () => {
 
   const deleteItem = async (id) => {
     try {
-      await axios.delete(`http://localhost:5000/api/items/${id}`, {
+      await axios.delete(`https://mern-crud-inventory-management.onrender.com/api/items/${id}`, {
         withCredentials: true,
       });
       fetchItems();
@@ -77,8 +77,8 @@ const ItemList = () => {
   const handleAuth = async (e) => {
     e.preventDefault();
     const url = isSignUp
-      ? "http://localhost:5000/api/auth/signup"
-      : "http://localhost:5000/api/auth/signin";
+      ? "https://mern-crud-inventory-management.onrender.com/api/auth/signup"
+      : "https://mern-crud-inventory-management.onrender.com/api/auth/signin";
     try {
       const response = await axios.post(url, authData, {
         withCredentials: true,
@@ -95,7 +95,7 @@ const ItemList = () => {
 
   const handleLogout = async () => {
     try {
-      await axios.post("http://localhost:5000/api/auth/logout", {}, {
+      await axios.post("https://mern-crud-inventory-management.onrender.com/api/auth/logout", {}, {
         withCredentials: true,
       });
       setUser(null);
